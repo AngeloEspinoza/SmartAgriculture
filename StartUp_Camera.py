@@ -3,7 +3,8 @@
 #                                                                                                  #
 #     With this code the camera RGB of the Intel RealSense R200 can be started up                  #
 #                                                                                                  #   
-#    It is necessary just to prove that the camera initializes first with the app of the computer  #
+#    It is necessary to prove that the camera initializes first with the app of the computer       #
+#                           before compiling this program in Python                                #
 ####################################################################################################
 
 # Importing the library of OpenCV
