@@ -16,4 +16,12 @@ Libraries:
 
 Drivers can be downloaded from:
 
+# Camera Calibrator (CC) and Depth Camera Manager (DCM):
 - https://downloadcenter.intel.com/product/92256/Intel-RealSense-Camera-R200
+
+# Software Development Kit (SDK):
+- https://software.intel.com/es-es/realsense-sdk-windows-eol?_ga=2.132851208.768500285.1553638288-778949068.1553529298
+
+Note: The last link redirects to a page where says that by the date that this is documented (27/03/19) the camera Intel RealSense R200 is discontinued, however they provide the link for downloading the 2016 SDK which works fine with the R200 there are also more documentation about the camera in the section below (R200). The next link redirects directly to the download of the SDK: 
+
+- http://registrationcenter-download.intel.com/akdlm/irc_nas/9078/intel_rs_sdk_offline_package_10.0.26.0396.exe
