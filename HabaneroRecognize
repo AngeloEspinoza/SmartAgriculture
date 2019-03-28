@@ -1,0 +1,61 @@
+import cv2 
+import numpy as np 
+
+# Defining which camera that will be used in this case the 2
+# By default the argument should be 0
+# The RGB camera of the  R200 is the #2 
+cam = cv2.VideoCapture(0)
+
+# Defining the colour bounds 
+orangeLower1 = np.array([10, 100, 20])
+orangeUpper1 = np.array([40, 255, 255])
+
+orangeLower2 = np.array([25, 100, 20])
+orangeUpper2 = np.array([30, 255, 255])
+# Constant loop 
+while True: 
+    
+    # Reading the pixels of the camera and putting the information into two variables
+    ret, img = cam.read()
+    
+    # Resizing the image by 400 x 400 
+    img = cv2.resize(img,(400,400))
+
+    # Filtering the image by reducing the noise
+    imgGAUSS = cv2.GaussianBlur(img, (7, 7), 0)
+
+    # Taking the image with less noise and convertin it to HSV
+    imgHSV = cv2.cvtColor(imgGAUSS, cv2.COLOR_BGR2HSV)
+
+    # Bounding the colours 
+
+    mask1 = cv2.inRange(imgHSV, orangeLower1, orangeUpper1)
+    mask2 = cv2.inRange(imgHSV, orangeLower2, orangeUpper2)
+    
+    mask = mask1 + mask2 
+
+    # Ellipse around the target 
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15))
+
+    # Erosioning the image and then dilating it
+    maskOPEN = cv2.morphologyEx(mask1, cv2.MORPH_OPEN, kernel)
+
+    # Dilating the image and the erosioning it
+    maskCLOSE = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+
+    # If ESC pressed closes all the windows
+    if (cv2.waitKey(1) & 0xFF) == 27:
+        break
+    else: 
+        pass
+
+    # Projecting the image     
+    cv2.imshow("Camera Window", img)
+    cv2.imshow("HSV", imgHSV)
+    cv2.imshow("", imgGAUSS)
+    cv2.imshow("", mask1)
+    cv2.imshow("", maskOPEN)
+
+
+# Making sure all windows closed
+cv2.destroyAllWindows()
