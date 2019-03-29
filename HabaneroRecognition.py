@@ -1,3 +1,13 @@
+#####################################################################################################
+#                                      Angelo D. Espinoza V.                                        #
+#                                                                                                   #
+#     This code can at certain point recognize the colours of the three different types of          #
+#    habanero pepper (red, green, orange/yellow) and also depicts the name of each one in real time #
+#                                                                                                   #
+#    It is necessary to prove that the camera initializes first with the app of the computer        #
+#                           before compiling this program in Python                                 #
+#####################################################################################################
+
 import cv2 
 import numpy as np 
 
