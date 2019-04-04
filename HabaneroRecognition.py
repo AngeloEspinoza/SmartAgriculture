@@ -13,7 +13,7 @@ import numpy as np
 
 # Defining which camera that will be used in this case the 2
 # By default the argument should be 0
-# The RGB camera of the  R200 is the #2 
+# The RGB camera of the  R200 is the #2 or #0 
 cam = cv2.VideoCapture(0)
 
 # Orange Habanero Pepper
@@ -31,11 +31,13 @@ greenUpper = np.array([52, 194, 184])
 redLower = np.array([7, 214, 114])
 redUpper = np.array([17, 234, 194]) 
 
-# Defininf colours in BGR
+# Defining colours in BGR
 black = (0, 0, 0)
 blue = (255, 0, 0)
 green = (0, 255, 0)
 red = (0, 0, 255)
+white = (255, 255, 255)
+orange = (0, 128, 255)
 
 # Font text 
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -78,6 +80,10 @@ while True:
     contourGreen, hierarchyGreen = cv2.findContours(maskGreen_CLOSE.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     contourRed, hierarchyRed = cv2.findContours(maskRed_CLOSE.copy(),cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
+    for contour in contourOrange:
+        Area = cv2.contourArea(contour)
+        print(Area)
+
     # Drawing contours around the target in this case the habaneros
     # Orange habaneros
     cv2.drawContours(img, contourOrange, -1, black, 1)
@@ -88,9 +94,9 @@ while True:
 
     # Looping around the recognized colours contours and then drawing an ellipse with certain colour
 
-    for i in range(len(contourOrange)):
-        if len(contourOrange[i]) >= 5:
-            ellipse_1 = cv2.fitEllipse(contourOrange[i])
+    for contour in range(len(contourOrange)):
+        if len(contourOrange[contour]) >= 5:
+            ellipse_1 = cv2.fitEllipse(contourOrange[contour])
             cv2.ellipse(img, ellipse_1, blue, 2)
 
             # Taking the position in a tuple and converting it to a list
@@ -101,12 +107,12 @@ while True:
             orangeEllipseinY = int(orangeListEllipse[1])
             
             # Writing the text "Orange Habanero" following the image 
-            cv2.putText(img, 'Orange Habanero',(orangeEllipseinX, orangeEllipseinY) , font, 0.5, black, 1, cv2.LINE_AA)
+            cv2.putText(img, 'Orange Habanero',(orangeEllipseinX, orangeEllipseinY) , font, 0.5, orange, 1, cv2.LINE_AA)
         else: break 
 
-    for i in range(len(contourGreen)):
-        if len(contourGreen[i]) >= 5:
-            ellipse_2 = cv2.fitEllipse(contourGreen[i])
+    for contour in range(len(contourGreen)):
+        if len(contourGreen[contour]) >= 5:
+            ellipse_2 = cv2.fitEllipse(contourGreen[contour])
             cv2.ellipse(img, ellipse_2, red, 2)
 
             # Taking the position in a tuple and converting it to a list
@@ -117,12 +123,12 @@ while True:
             greenEllipseinY = int(greenListEllipse[1])
             
             # Writing the text "Green Habanero" following the image 
-            cv2.putText(img, 'Green Habanero',(greenEllipseinX, greenEllipseinY) , font, 0.5, black, 1, cv2.LINE_AA)
+            cv2.putText(img, 'Green Habanero',(greenEllipseinX, greenEllipseinY) , font, 0.5, green, 1, cv2.LINE_AA)
         else: break
 
-    for i in range(len(contourRed)):
-        if len(contourRed[i]) >= 5:
-            ellipse_3 = cv2.fitEllipse(contourRed[i])
+    for contour in range(len(contourRed)):
+        if len(contourRed[contour]) >= 5:
+            ellipse_3 = cv2.fitEllipse(contourRed[contour])
             cv2.ellipse(img, ellipse_3, green, 2)
 
             # Taking the position in a tuple and converting it to a list
@@ -133,7 +139,7 @@ while True:
             redEllipseinY = int(redListEllipse[1])
             
             # Writing the text "Red Habanero" following the image 
-            cv2.putText(img, 'Red Habanero',(redEllipseinX, redEllipseinY) , font, 0.5, black, 1, cv2.LINE_AA)       
+            cv2.putText(img, 'Red Habanero',(redEllipseinX, redEllipseinY) , font, 0.5, red, 1, cv2.LINE_AA)       
         else: break
 
     # If ESC pressed closes all the windows
@@ -145,8 +151,10 @@ while True:
     cv2.imshow("Camera Window", img)
     cv2.imshow("HSV", imgHSV)
     cv2.imshow("", imgGAUSS)
-    #cv2.imshow("", maskOrange_CLOSE)
+    cv2.imshow("", maskOrange_CLOSE)
 
 
 # Making sure all windows closed
 cv2.destroyAllWindows()
+
+   
