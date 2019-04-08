@@ -2,7 +2,7 @@
 #                                      Angelo D. Espinoza V.                                        #
 #                                                                                                   #
 #     This code counts the shapes of a given colour and throws an approximation of the number of    #
-#    					habaneros counted based on the last aspect mentioned  						#
+#    			habaneros counted based on the last aspect mentioned  	                    #
 #                                                                                                   #
 #    The image input has to be provide in the variable "img" since this program isn't in real       #
 #                      If it's necessary should be provide the whole path location                  #
