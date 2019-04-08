@@ -57,7 +57,7 @@ while True:
 	# Setting a mouse callback with parameteres to the function pickColor 
 	cv2.setMouseCallback('HSV', pickColor)
 
-	# Converting from HSV to BGR 
+	# Converting from BGR to HSV
 	imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
 	# Displaying the image 
