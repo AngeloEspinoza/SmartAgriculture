@@ -1,17 +1,17 @@
 #####################################################################################################
 #                                      Angelo D. Espinoza V.                                        #
 #                                                                                                   #
-#   This code was made with the purpose of facilitating at the moment of choosing a range between	#
-# 	colors for the function cv2.cvtColor() in real time, this was code was based in a code that		#	
-#						can be found in the next link: https://bit.ly/2D5YM0s 						#
-#			  																						#
+#   This code was made with the purpose of facilitating at the moment of choosing a range between   #
+# 	colors for the function cv2.cvtColor() in real time, this was code was based in a code that #	
+#			can be found in the next link: https://bit.ly/2D5YM0s 		            #
+#			  									    #												#
 #                                                                                                   #
-#    After compiling the program 2 windows will be opened, one with the RGB window and other with   #
-#    HSV window, in order to print out the range values you should left-click on the HSV window     #
-# 	then another window with the mask based on the range provided will be opened, and a message 	#
-# 	in console with 3 arrays, the first is the actual pixels, the second array with a -10 range 	#
-# 	and finally the third array with a +10 range, the last two should be taken in consideration 	#
-#					at the moment of putting in the function cv2.cvtColor() 						#
+#  After compiling the program 2 windows will be opened, one with the RGB window and other with     #
+#   HSV window, in order to print out the range values you should left-click on the HSV window      #
+#   then another window with the mask based on the range provided will be opened, and a message     #
+#   in console with 3 arrays, the first is the actual pixels, the second array with a -10 range     #
+#   and finally the third array with a +10 range, the last two should be taken in consideration     #
+#			at the moment of putting in the function cv2.cvtColor()     		    #
 #####################################################################################################
 
 import cv2 
@@ -25,7 +25,7 @@ pixel = (20, 60, 80)
 
 #####################################################################################
 # The purpose of this function is to do each time a left click is pressed a windows #
-#  							it prints out a range based  							# 
+#  			    it prints out a range based 		            # 
 #####################################################################################
 
 def pickColor(event, x, y, flags, param): 
