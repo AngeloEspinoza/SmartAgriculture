@@ -27,11 +27,11 @@ greenLower = np.array([32, 174, 104])
 greenUpper = np.array([52, 194, 184])
 
 # Red Habanero Pepper
-# Defining reed colour bounds
+# Defining red colour bounds
 redLower = np.array([7, 214, 114])
 redUpper = np.array([17, 234, 194]) 
 
-# Defininf colours in BGR
+# Defining colours in BGR
 black = (0, 0, 0)
 blue = (255, 0, 0)
 green = (0, 255, 0)
